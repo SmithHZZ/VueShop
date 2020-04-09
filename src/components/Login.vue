@@ -26,8 +26,8 @@ export default {
     data () {
         return {
             form: {
-                username: 'zs',
-                password: '123'
+                username: 'admin',
+                password: '123456'
             },
             loginFormRules: {
                 username: [
@@ -48,11 +48,13 @@ export default {
                     return
                 }
                 this.$http.post('login', this.form).then((data) => {
-                    const user = data.data.data
-                    if (!user) {
-                        return this.$message.error('用户名或密码错误！')
+                    if (data.data.meta.status === 200) {
+                      this.$message.success('登陆成功')
+                      window.sessionStorage.setItem('token', data.data.data.token)
+                      this.$router.push('/home')
+                    } else {
+                      this.$message.error(data.data.meta.msg)
                     }
-                    this.$message.success('登陆成功')
                 })
             })
         },

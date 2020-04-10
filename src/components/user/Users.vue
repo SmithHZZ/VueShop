@@ -33,7 +33,7 @@
               <template slot-scope="list">
                 <el-button type="primary" icon="el-icon-edit" @click="editUser(list.row.id)" size="mini"></el-button>
                 <el-button type="danger" icon="el-icon-delete" size="mini" @click="confirmDelete(list.row.id)"></el-button>
-                <el-tooltip :enterable="false" effect="dark" content="分配权限" placement="top">
+                <el-tooltip :enterable="false" effect="dark" content="分配角色" placement="top">
                   <el-button type="warning" icon="el-icon-setting" size="mini" ></el-button>
                 </el-tooltip>
               </template>
